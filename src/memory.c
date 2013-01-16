@@ -1,3 +1,4 @@
+#include <libobj/libobj.h>
 #include <libobj/memory.h>
 #include <libobj/default_functions.h>
 #include <stdlib.h>
@@ -12,7 +13,7 @@ void *new(Class *class, ...) {
 
   /* pointer to the generic class object
      for standrd constructors & destructors */
-  *(struct libobj_class **)&p = class;
+  *(struct libobj_class **)p = class;
 
   /* assign default constructor and destructor if not set */
   (class->construct == NULL) && class->construct = libobj_default_constructor;
@@ -31,7 +32,7 @@ void *new(Class *class, ...) {
 
 void delete(void *obj) {
   /* call destructor */
-  (*(struct libobj_class **)&obj)->destruct(obj);
+  get_class(obj)->destruct(obj);
 
   /* free the memory used */
   free(obj);

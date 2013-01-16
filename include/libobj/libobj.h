@@ -14,4 +14,6 @@ typedef struct libobj_class {
 #include "default_functions.h"
 #include "memory.h"
 
+Class *get_class(void *obj);
+
 #endif /* LIBOBJ_LIBOBJ_H */

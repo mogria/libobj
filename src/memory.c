@@ -16,8 +16,8 @@ void *new(Class *class, ...) {
   *(struct libobj_class **)p = class;
 
   /* assign default constructor and destructor if not set */
-  (class->construct == NULL) && class->construct = libobj_default_constructor;
-  (class->destruct == NULL) && class->destruct = libobj_default_destructor;
+  class->construct == NULL && (class->construct = libobj_default_constructor);
+  class->destruct == NULL && (class->destruct = libobj_default_destructor);
 
   /* read the dynamic arguments given to new
      to pass it to the constructor */
@@ -31,10 +31,12 @@ void *new(Class *class, ...) {
 }
 
 void delete(void *obj) {
-  /* call destructor */
-  get_class(obj)->destruct(obj);
+  if(obj != NULL) {
+    /* call destructor */
+    get_class(obj)->destruct(obj);
 
-  /* free the memory used */
-  free(obj);
+    /* free the memory used */
+    free(obj);
+  }
   return;
 }

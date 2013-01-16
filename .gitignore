@@ -1,0 +1,12 @@
+bin/
+build/
+*.o
+*.obj
+*.exe
+*.a
+c_class_test
+CMakeFiles/
+CMakeCache.txt
+Makefile
+cmake_install.cmake
+libobj

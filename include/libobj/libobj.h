@@ -5,7 +5,7 @@
 #include <stddef.h>
 
 typedef struct libobj_class {
-  size_t class_size;
+  size_t size;
   void (*construct)(void *self, va_list *args);
   void (*destruct)(void *self);
 } Class;
@@ -15,5 +15,6 @@ typedef struct libobj_class {
 #include "memory.h"
 
 Class *get_class(void *obj);
+size_t size_of(void *obj);
 
 #endif /* LIBOBJ_LIBOBJ_H */

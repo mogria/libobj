@@ -6,3 +6,6 @@ Class *get_class(void *obj) {
   return *(Class **)obj;
 }
 
+size_t size_of(void *obj) {
+  return get_class(obj)->size;
+}

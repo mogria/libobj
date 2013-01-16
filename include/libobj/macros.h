@@ -3,7 +3,7 @@
 
 #define CLASS(name) \
 struct #name _class { \
-  struct libobj_class *class;
+  Class *class;
 
 #define END_CLASS(name, construct, destruct) \
 }; \

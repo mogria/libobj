@@ -8,7 +8,7 @@
 
 void *new(Class *class, ...) {
   /* allocate memory for the object */
-  void *p = calloc(1, class->class_size);
+  void *p = calloc(1, class->size);
   assert(p != NULL);
 
   /* pointer to the generic class object

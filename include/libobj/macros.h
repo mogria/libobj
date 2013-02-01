@@ -9,7 +9,7 @@ struct name { \
 };
 
 #define INIT_CLASS(name, construct, destruct) \
-Class name## _class = { \
+static Class name## _class = { \
   sizeof(struct name), \
   construct, \
   destruct \
@@ -18,7 +18,7 @@ Class name## _class = { \
 Class *name = &name## _class;
 
 
-#define CONSTRUCTOR(name) void name(void *self, va_list *args)
-#define DESTRUCTOR(name) void name(void *self)
+#define CONSTRUCTOR(name) void name(void *_self, va_list *_args)
+#define DESTRUCTOR(name) void name(void *_self)
 
 #endif /* LIBOBJ_MACROS_H */
